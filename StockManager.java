@@ -40,14 +40,23 @@ public class StockManager
     }
     
     /**
-     * Try to find a product in the stock with the given id.
-     * @return The identified product, or null if there is none
-     *         with a matching ID.
+     * Find Product 
+     * @param int id - id specified by calling object
+     * @return Returns Product object or null
      */
     public Product findProduct(int id)
     {
-        return null;
+        
+        for( Product p : stock )
+        { 
+            if (p.getID() == id)
+            {
+                return p;
+            }
+        }
+        return null; 
     }
+
     
     /**
      * Locate a product with the given ID, and return how
