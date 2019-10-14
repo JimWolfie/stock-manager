@@ -59,14 +59,19 @@ public class StockManager
 
     
     /**
-     * Locate a product with the given ID, and return how
-     * many of this item are in stock. If the ID does not
-     * match any product, return zero.
-     * @param id The ID of the product.
-     * @return The quantity of the given product in stock.
+     * numberInStock 
+     * @param int id specified by the calling object
+     * @return int = quantity held by found product or 0 
+     * if no product is found
      */
+    
     public int numberInStock(int id)
     {
+        Product q = findProduct(id);
+        if (q!= null)
+        {
+            return q.getQuantity();
+        }
         return 0;
     }
 
