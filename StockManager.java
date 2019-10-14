@@ -32,12 +32,18 @@ public class StockManager
     /**
      * Receive a delivery of a particular product.
      * Increase the quantity of the product by the given amount.
-     * @param id The ID of the product.
-     * @param amount The amount to increase the quantity by.
+     * @param int id - id specified by teh calling object
+     * @param int amount - increasing quanity of found object by amount.
      */
-    public void delivery(int id, int amount)
+  public void delivery(int id, int amount)
     {
+      Product q = findProduct(id);
+      if (q!= null)
+      {
+          q.increaseQuantity(amount);
+      }
     }
+
     
     /**
      * Find Product 
@@ -60,7 +66,7 @@ public class StockManager
     
     /**
      * numberInStock 
-     * @param int id specified by the calling object
+     * @param int id -id specified by the calling object
      * @return int = quantity held by found product or 0 
      * if no product is found
      */
