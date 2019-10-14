@@ -21,12 +21,18 @@ public class StockManager
     }
 
     /**
-     * Add a product to the list.
+     * addProduct
      * @param item The item to be added.
      */
     public void addProduct(Product item)
     {
-        stock.add(item);
+        
+        if (findProduct(item.getID())==null ) //product isn't there
+        {
+            stock.add(item);
+        }else {
+            System.out.println("The item is already on the list");
+        }    
     }
     
     /**
@@ -46,7 +52,7 @@ public class StockManager
 
     
     /**
-     * Find Product 
+     * findProduct  
      * @param int id - id specified by calling object
      * @return Returns Product object or null
      */
@@ -62,6 +68,23 @@ public class StockManager
         }
         return null; 
     }
+    /**
+     * findProduct 
+     * @param String name - name specified by calling object
+     * @returns product with matching name or null
+     */
+    public Product findProduct(String name)
+    {  
+        for( Product p : stock )
+        { 
+            if (name.equals(p.getName()))
+            {
+                return p;
+            }
+        }
+        return null;
+    }
+
 
     
     /**
@@ -82,7 +105,7 @@ public class StockManager
     }
 
     /**
-     * Print details of all the products.
+     * printProductDetails
      */
     public void printProductDetails()
     {
@@ -91,5 +114,19 @@ public class StockManager
             System.out.println(s.toString());
         }
     }
+    /**
+     * printProductDetails
+     * @param int culVal
+     */
+    public void printProductDetails(int culVal)
+    {
+        for (Product s : stock )
+        {
+            if (s.getQuantity() < culVal){
+            System.out.println(s.toString());
+        }
+        }
+    }
+
 
 }
